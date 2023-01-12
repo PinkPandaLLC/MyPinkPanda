@@ -7,6 +7,7 @@ import './App.css'
 // Pages and Components
 import Login from './pages/login/Login'
 import Signup from './pages/signup/Signup'
+import Dashboard from './pages/dashboard/Dashboard'
 
 // Components
 import Navbar from './components/Navbar';
@@ -16,11 +17,15 @@ function App() {
 
   return (
     <div className="App">
+
       {authIsReady && (
+
         <BrowserRouter>
+
           <div className="container">
             <Navbar />
             <Switch>
+
               <Route exact path="/">
                 { !user && <Redirect to="/login"/>}
                 { user && <Redirect to="/"/>} 
@@ -33,10 +38,18 @@ function App() {
                 {!user && <Signup /> }
                 {user && <Redirect to="/"/>}
               </Route>
+              <Route path='/dashboard'>
+              {!user && <Signup /> }
+              {user && <Redirect to="/"/>}
+              </Route>
+
             </Switch>
           </div>
+
         </BrowserRouter>
+
       )}
+
     </div>
   );
 }
