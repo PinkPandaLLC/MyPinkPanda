@@ -1,55 +1,46 @@
 // Imports
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { useAuthContext } from './hooks/useAuthContext';
+import { BrowserRouter, Route, Router, Switch } from 'react-router-dom'
+// Pages 
+import Home from './Pages/index/Home'
+import Dashboard from './Pages/dashboard/Dashboard'
+import FAQs from './Pages/FAQs/FAQs'
+import ProductDetails from './Pages/productDetails/ProductDetails'
+import Shop from './Pages/shopall/Shop'
+import Wip from './Pages/wip/Wip'
+// & Components
+import Navbar from './components/Navbar'
+
 // Styles
 import './App.css'
 
-// Pages and Components
-import Login from './pages/login/Login'
-import Signup from './pages/signup/Signup'
-import Dashboard from './pages/dashboard/Dashboard'
-
-// Components
-import Navbar from './components/Navbar';
-
 function App() {
-  const { user, authIsReady } = useAuthContext() 
-
   return (
     <div className="App">
-
-      {authIsReady && (
-
-        <BrowserRouter>
-
-          <div className="container">
-            <Navbar />
-            <Switch>
-
-              <Route exact path="/">
-                { !user && <Redirect to="/login"/>}
-                { user && <Redirect to="/"/>} 
-              </Route>
-              <Route path="/login">
-                { !user && <Login />}
-                { user && <Redirect to="/"/>}
-              </Route>
-              <Route path="/signup">
-                {!user && <Signup /> }
-                {user && <Redirect to="/"/>}
-              </Route>
-              <Route path='/dashboard'>
-              {!user && <Signup /> }
-              {user && <Redirect to="/"/>}
-              </Route>
-
-            </Switch>
-          </div>
-
-        </BrowserRouter>
-
-      )}
-
+      <BrowserRouter>
+        <div className="container">
+          <Navbar/>
+          <Switch>
+            <Route exact path ="/">
+              <Home/>
+            </Route>
+            <Route path ="/dashboard">
+              <Dashboard/>
+            </Route>
+            <Route path ="/FAQs">
+              <FAQs/>
+            </Route>
+            <Route path ="/details/:id">
+              <ProductDetails/>
+            </Route>
+            <Route path ="/shop">
+              <Shop/>
+            </Route>
+            <Route path ="/wip">
+              <Wip/>
+            </Route>
+          </Switch>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,4 +1,6 @@
-import './dashboard.css'
+// Styles
+import './Dashboard.css'
+
 
 export default function Dashboard() {
   return (

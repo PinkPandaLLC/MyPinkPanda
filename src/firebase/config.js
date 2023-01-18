@@ -1,29 +1,26 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
-import 'firebase/storage'
 
 
+// update accordingly
 const firebaseConfig = {
-// Place config data from firebase console here
-apiKey: "AIzaSyC6fUqW38dt9Htqm-gJpr9fqWVAlyAzOqI",
-authDomain: "thedojosite-a82ae.firebaseapp.com",
-projectId: "thedojosite-a82ae",
-storageBucket: "thedojosite-a82ae.appspot.com",
-messagingSenderId: "514477964714",
-appId: "1:514477964714:web:69666b1a494e4af7eb3fd3"
+    apiKey: "AIzaSyBJzL8Xwvv0lcmkiGstj6fh3dBB2D3zH4Q",
+    authDomain: "ecommercepptesting.firebaseapp.com",
+    projectId: "ecommercepptesting",
+    storageBucket: "ecommercepptesting.appspot.com",
+    messagingSenderId: "325081325319",
+    appId: "1:325081325319:web:6c948270a0cb3e8ac7efa2"
 }
 
-
-// init firebase
+// Init Firebase 
 firebase.initializeApp(firebaseConfig)
 
-// init services
+// Init Service
 const projectFirestore = firebase.firestore()
 const projectAuth = firebase.auth()
-const projectStorage = firebase.storage()
 
-// Timestamp function
+// Timestamp
 const timestamp = firebase.firestore.Timestamp
 
-export { projectFirestore, projectAuth, projectStorage, timestamp }
+export {projectFirestore, projectAuth, timestamp}
